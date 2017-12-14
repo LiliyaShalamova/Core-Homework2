@@ -3,3 +3,25 @@
     ViewData["Title"] = "All";
     Layout = "_Layout";
 }
+
+<table class="table">
+    <tr><td>Имя</td><td>Фамилия</td><td>Группа</td></tr>
+    @foreach (var student in Model)
+    {
+        <tr>
+                <td>@student.Name</td>
+                <td>@student.LastName</td>
+                <td>@student.Group</td>
+                <td>
+                    <a href="/Student/Update/id=@student.Id">
+                        <button>Редактировать</button>
+                    </a>
+                </td>
+                <td>
+                    <a href="/Student/Delete/id=@student.Id">
+                        <button>Удалить</button>
+                    </a>
+                </td>
+        </tr>
+    }
+</table>

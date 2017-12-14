@@ -1,0 +1,22 @@
+﻿@model Student
+@{
+    ViewData["Title"] = "Create";
+    Layout = "_Layout";
+}
+<br>
+@using (Html.BeginForm("Create", "Student", FormMethod.Post))
+{
+    @Html.LabelFor(s => s.Name, "Имя");
+    <br>
+    @Html.TextBox("Name");
+    <br>
+    @Html.LabelFor(s => s.Name, "Фамилия");
+    <br>
+    @Html.TextBox("LastName");
+    <br>
+    @Html.LabelFor(s => s.Name, "Группа");
+    <br>
+    @Html.TextBox("Group");
+    <br>
+    <input type="submit" value="Создать"/>
+}

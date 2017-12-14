@@ -9,17 +9,31 @@ namespace CoreHomework2.Controllers
 {
     public class StudentController : Controller
     {
+        private StudentContext db;
+        public StudentController(StudentContext context)
+        {
+            db = context;
+        }
+
         [HttpGet]
         public IActionResult All()
         {
-            var students = new Student[0];
+            var students = db.Students.ToList();
             return View(students);
+        }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
         }
 
         [HttpPost]
         public IActionResult Create(Student student)
         {
-            return View();
+            db.Students.Add(student);
+            db.SaveChanges();
+            return RedirectToAction("All"); ;
         }
 
         [HttpGet]
