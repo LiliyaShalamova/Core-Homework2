@@ -19,6 +19,7 @@ namespace CoreHomework2
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((hostingContext, config) => config.AddJsonFile("author.json", true, true))
                 .UseStartup<Startup>()
                 .Build();
     }

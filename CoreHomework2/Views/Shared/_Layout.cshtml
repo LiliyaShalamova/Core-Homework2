@@ -1,4 +1,11 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.Extensions.Configuration
+@inject IConfiguration Config
+@{
+    var name = Config.GetSection("Name").Value;
+    var lastName = Config.GetSection("LastName").Value;
+    var email = Config.GetSection("Email").Value;
+}
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -40,7 +47,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; 2017</p>
+            <p>&copy; 2017 @($"{name} {lastName} {email}")</p>
         </footer>
     </div>
 
