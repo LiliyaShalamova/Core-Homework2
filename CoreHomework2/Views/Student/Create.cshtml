@@ -6,13 +6,19 @@
 <br>
 @using (Html.BeginForm("Create", "Student", FormMethod.Post))
 {
+    @Html.ValidationMessageFor(s => s.Name);
+    <br>
     @Html.LabelFor(s => s.Name, "Имя");
     <br>
     @Html.TextBox("Name");
     <br>
     @Html.LabelFor(s => s.Name, "Фамилия");
     <br>
+    @Html.ValidationMessageFor(s => s.LastName);
+    <br>
     @Html.TextBox("LastName");
+    <br>
+    @Html.ValidationMessageFor(s => s.Group);
     <br>
     @Html.LabelFor(s => s.Name, "Группа");
     <br>

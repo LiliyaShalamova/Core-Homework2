@@ -31,6 +31,8 @@ namespace CoreHomework2.Controllers
         [HttpPost]
         public IActionResult Create(Student student)
         {
+            if (!ModelState.IsValid)
+                return View(student);
             db.Students.Add(student);
             db.SaveChanges();
             return RedirectToAction("All"); ;
@@ -53,6 +55,8 @@ namespace CoreHomework2.Controllers
         [HttpPost]
         public IActionResult Update(Student student)
         {
+            if (!ModelState.IsValid)
+                return View(student);
             db.Students.Update(student);
             db.SaveChanges();
             return RedirectToAction("All");
