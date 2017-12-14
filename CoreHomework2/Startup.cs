@@ -8,6 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using CoreHomework2.Models;
 using Microsoft.EntityFrameworkCore;
+using CoreHomework2.Services;
 
 namespace CoreHomework2
 {
@@ -26,6 +27,7 @@ namespace CoreHomework2
             string connection = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<StudentContext>(options =>
                 options.UseSqlServer(connection));
+            services.AddTransient<IStudentService, StudentService>();
             services.AddMvc();
         }
 

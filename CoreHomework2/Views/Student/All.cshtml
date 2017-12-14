@@ -1,12 +1,16 @@
-﻿@model IEnumerable<Student>
+﻿@using CoreHomework2.Services
 @{
     ViewData["Title"] = "All";
     Layout = "_Layout";
 }
+@inject IStudentService service
+@{
+    var students = service.All();
+}
 
 <table class="table">
     <tr><td>Имя</td><td>Фамилия</td><td>Группа</td></tr>
-    @foreach (var student in Model)
+    @foreach (var student in students)
     {
         <tr>
                 <td>@student.Name</td>

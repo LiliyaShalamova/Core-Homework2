@@ -4,22 +4,24 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using CoreHomework2.Models;
+using CoreHomework2.Services;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace CoreHomework2.Controllers
 {
     public class StudentController : Controller
     {
-        private StudentContext db;
-        public StudentController(StudentContext context)
+        private readonly IStudentService studentService;
+
+        public StudentController(IStudentService service)
         {
-            db = context;
+            studentService = service;
         }
 
         [HttpGet]
         public IActionResult All()
         {
-            var students = db.Students.ToList();
-            return View(students);
+            return View();
         }
 
         [HttpGet]
@@ -29,26 +31,27 @@ namespace CoreHomework2.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Student student)
+        public IActionResult Create([FromServices]IStudentService service, Student student)
         {
             if (!ModelState.IsValid)
                 return View(student);
-            db.Students.Add(student);
-            db.SaveChanges();
+            service.Create(student);
             return RedirectToAction("All"); ;
         }
 
         [HttpGet]
         public IActionResult Read(int id)
         {
-            var student = db.Students.FirstOrDefault(s => s.Id == id);
+            var service = ActivatorUtilities
+                .GetServiceOrCreateInstance<IStudentService>(HttpContext.RequestServices);
+            var student = service.Read(id);
             return View(student);
         }
 
         [HttpGet]
         public IActionResult Update(int id)
         {
-            var student = db.Students.FirstOrDefault(s => s.Id == id);
+            var student = studentService.Read(id);
             return View(student);
         }
 
@@ -57,17 +60,14 @@ namespace CoreHomework2.Controllers
         {
             if (!ModelState.IsValid)
                 return View(student);
-            db.Students.Update(student);
-            db.SaveChanges();
+            studentService.Update(student);
             return RedirectToAction("All");
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            var student = db.Students.FirstOrDefault(s => s.Id == id);
-            db.Remove(student);
-            db.SaveChanges();
+            studentService.Delete(id);
             return RedirectToAction("All");
         }
     }
