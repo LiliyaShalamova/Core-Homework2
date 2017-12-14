@@ -39,25 +39,32 @@ namespace CoreHomework2.Controllers
         [HttpGet]
         public IActionResult Read(int id)
         {
-            return View();
+            var student = db.Students.FirstOrDefault(s => s.Id == id);
+            return View(student);
         }
 
         [HttpGet]
         public IActionResult Update(int id)
         {
-            return View();
+            var student = db.Students.FirstOrDefault(s => s.Id == id);
+            return View(student);
         }
 
         [HttpPost]
         public IActionResult Update(Student student)
         {
-            return View();
+            db.Students.Update(student);
+            db.SaveChanges();
+            return RedirectToAction("All");
         }
 
         [HttpGet]
         public IActionResult Delete(int id)
         {
-            return View();
+            var student = db.Students.FirstOrDefault(s => s.Id == id);
+            db.Remove(student);
+            db.SaveChanges();
+            return RedirectToAction("All");
         }
     }
 }

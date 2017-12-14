@@ -3,3 +3,20 @@
     ViewData["Title"] = "Update";
     Layout = "_Layout";
 }
+<br>
+@using (Html.BeginForm("Update", "Student", new { id = Model.Id }, FormMethod.Post))
+{
+    @Html.LabelFor(s => s.Name, "Имя");
+    <br>
+    @Html.TextBox("Name", Model.Name);
+    <br>
+    @Html.LabelFor(s => s.Name, "Фамилия");
+    <br>
+    @Html.TextBox("LastName", Model.LastName);
+    <br>
+    @Html.LabelFor(s => s.Name, "Группа");
+    <br>
+    @Html.TextBox("Group", Model.Group);
+    <br>
+    <input type="submit" value="Редактировать" />
+}
