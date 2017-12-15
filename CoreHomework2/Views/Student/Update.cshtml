@@ -14,15 +14,19 @@
     <br>
     @Html.ValidationMessageFor(s => s.LastName);
     <br>
-    @Html.LabelFor(s => s.Name, "Фамилия");
+    @Html.LabelFor(s => s.LastName, "Фамилия");
     <br>
     @Html.TextBox("LastName", Model.LastName);
     <br>
     @Html.ValidationMessageFor(s => s.Group);
     <br>
-    @Html.LabelFor(s => s.Name, "Группа");
+    @Html.LabelFor(s => s.Group, "Группа");
     <br>
     @Html.TextBox("Group", Model.Group);
+    <br>
+    @Html.LabelFor(s => s.University, "Университет");
+    <br>
+    @Html.TextBox("University", Model.University);
     <br>
     <input type="submit" value="Редактировать" />
 }

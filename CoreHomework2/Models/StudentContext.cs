@@ -12,5 +12,12 @@ namespace CoreHomework2.Models
         public StudentContext(DbContextOptions<StudentContext> options)
             :base(options)
         { }
+
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            builder.Entity<Student>()
+                .Property(s => s.University)
+                .IsRequired();
+        }
     }
 }

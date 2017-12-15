@@ -12,7 +12,7 @@
     <br>
     @Html.TextBox("Name");
     <br>
-    @Html.LabelFor(s => s.Name, "Фамилия");
+    @Html.LabelFor(s => s.LastName, "Фамилия");
     <br>
     @Html.ValidationMessageFor(s => s.LastName);
     <br>
@@ -20,9 +20,13 @@
     <br>
     @Html.ValidationMessageFor(s => s.Group);
     <br>
-    @Html.LabelFor(s => s.Name, "Группа");
+    @Html.LabelFor(s => s.Group, "Группа");
     <br>
     @Html.TextBox("Group");
+    <br>
+    @Html.LabelFor(s => s.University, "Университет");
+    <br>
+    @Html.TextBox("University");
     <br>
     <input type="submit" value="Создать"/>
 }

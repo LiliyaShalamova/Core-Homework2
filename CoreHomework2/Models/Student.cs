@@ -24,5 +24,7 @@ namespace CoreHomework2.Models
         [MaxLength(15)]
         [Display(Name = "Группа")]
         public string Group { get; set; }
+
+        public string University { get; set; }
     }
 }

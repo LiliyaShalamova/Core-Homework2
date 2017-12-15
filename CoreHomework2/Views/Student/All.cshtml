@@ -9,13 +9,14 @@
 }
 
 <table class="table">
-    <tr><td>Имя</td><td>Фамилия</td><td>Группа</td></tr>
+    <tr><td>Имя</td><td>Фамилия</td><td>Группа</td><td>Университет</td></tr>
     @foreach (var student in students)
     {
         <tr>
                 <td>@student.Name</td>
                 <td>@student.LastName</td>
                 <td>@student.Group</td>
+                <td>@student.University</td>
                 <td>
                     <a href="/Student/Read?id=@student.Id">
                         <button>Просмотр</button>
